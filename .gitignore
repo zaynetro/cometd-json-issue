@@ -1,0 +1,12 @@
+.DS_Store
+.idea
+*.log
+tmp/
+
+*.class
+build
+.classpath
+.project
+.settings
+*.iml
+target
