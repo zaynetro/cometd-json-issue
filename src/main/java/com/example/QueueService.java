@@ -39,6 +39,8 @@ public class QueueService {
 
     @Scheduled( fixedDelay = 10000 )
     private void monitorQueue() {
+        pushToQueue( OortConfig.getHost() + " monitored the queue." );
+
         for( Info<List<QueueItem>> info : queue ) {
             LOG.debug( "Items on {}: {}", info.getOortURL(), info.getObject().size() );
             for( QueueItem item : info.getObject() ) {
@@ -46,7 +48,7 @@ public class QueueService {
             }
         }
 
-        myOortService.broadcast( new QueueItem( OortConfig.getHost() + " monitored the queue." ) );
+        // myOortService.broadcast( new QueueItem( OortConfig.getHost() + " monitored the queue." ) );
     }
 
     public static class QueueItem {
